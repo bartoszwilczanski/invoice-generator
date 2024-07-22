@@ -1,0 +1,33 @@
+<table id="goods-list-table">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Count</th>
+        @if(!companyId){
+        <th></th>
+        <th></th>
+        }
+    </tr>
+    @for (good of goods; track good.id) {
+    <tr>
+        <td> {{good.name}}</td>
+        <td> {{good.price}}</td>
+        <td> {{good.count}}</td>
+
+        @if(!companyId){
+        <td>
+            <a [routerLink]="['/company', good.companyId]">
+                <ng-icon name="bootstrapEye"></ng-icon>
+            </a>
+        </td>
+        <td *ngIf="onDelete">
+            <button (click)="onDelete(good.id)">
+                <ng-icon name="bootstrapTrash"></ng-icon>
+            </button>
+        </td>
+        }
+    </tr>
+    } @empty {
+    <p>no goods</p>
+    }
+</table>

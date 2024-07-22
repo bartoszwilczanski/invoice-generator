@@ -1,0 +1,24 @@
+#goods-list-table {
+    padding: 10px 20px;
+
+    tr:nth-child(odd) {
+        background: #E1E0E0;
+    }
+
+    tr:nth-child(even) {
+        background: #D2D2D2;
+    }
+
+    td {
+        min-width: 32px;
+        text-align: center;
+    }
+
+    button {
+        cursor: pointer;
+        border: unset;
+        background: transparent;
+    }
+
+
+}

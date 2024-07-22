@@ -1,0 +1,18 @@
+@if(company){
+<div>
+    <div id="comapny-box">
+        <p>{{company.name}}</p>
+        <p>{{company.phone}}</p>
+        <p>{{company.email}}</p>
+        <p>{{company.address}}</p>
+        <p>{{company.about}}</p>
+    </div>
+
+    @if(companyId){
+    <goods-list [goods]="goods" [companyId]="companyId" />
+
+    <p id="summary">total {{goodsSummary()}}</p>
+    }
+    @else{ No items }
+</div>
+}

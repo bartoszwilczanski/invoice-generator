@@ -1,0 +1,50 @@
+{
+  "company": {
+    "name": "RODEMCO",
+    "address": "932 Quentin Road, Ladera, Delaware, 3387",
+    "email": "bondsalinas@rodemco.com",
+    "phone": "+1 (956) 503-2947",
+    "id": 1,
+    "about": "Consectetur aute deserunt proident elit incididunt cupidatat ullamco occaecat deserunt excepteur ad. Enim pariatur aute exercitation do voluptate exercitation ut reprehenderit in quis. Exercitation irure non enim ea excepteur proident consectetur mollit laboris ipsum anim elit.\r\n",
+    "createdAt": "2023-01-15T08:30:00Z",
+    "updatedAt": "2023-07-15T10:00:00Z"
+  },
+  "goods": [
+    {
+      "id": 1,
+      "name": "Wireless Mouse",
+      "count": 10,
+      "price": 1500,
+      "createdAt": "2024-01-15T08:30:00Z",
+      "updatedAt": "2024-06-15T10:00:00Z",
+      "companyId": 1
+    },
+    {
+      "id": 2,
+      "name": "Laptop Stand",
+      "count": 25,
+      "price": 300,
+      "createdAt": "2024-02-20T11:45:00Z",
+      "updatedAt": "2024-06-20T12:15:00Z",
+      "companyId": 1
+    },
+    {
+      "id": 3,
+      "name": "Bluetooth Headphones",
+      "count": 50,
+      "price": 500,
+      "createdAt": "2024-03-10T09:20:00Z",
+      "updatedAt": "2024-06-10T14:30:00Z",
+      "companyId": 1
+    },
+    {
+      "id": 4,
+      "name": "USB-C Hub",
+      "count": 5,
+      "price": 100,
+      "createdAt": "2024-04-05T07:10:00Z",
+      "updatedAt": "2024-06-05T09:45:00Z",
+      "companyId": 1
+    }
+  ]
+}
