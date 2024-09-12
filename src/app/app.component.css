@@ -1,40 +1,27 @@
-main {
-    margin: 100px auto 0;
-    width: 1000px;
-
+mat-toolbar {
     nav {
-        border-radius: 6px;
-        ul {
-            list-style: none;
-            display: flex;
+        padding: 4px;
+        margin: 0px 0px 16px 16px;
 
-            background: rgb(2, 0, 36);
-            background: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(0, 0, 0, 1) 35%, rgba(82, 82, 82, 1) 100%);
-
-            width: max-content;
-
-            padding: 4px;
-            margin: 0px 0px 16px 16px;
-
-            li {
-                padding-right: 8px;
-
-                a {
-                    color: #bdbdbd;
-                    text-decoration: none;
-                }
-
-                a:hover{
-                    text-decoration: underline;
-                }
-            }
-
-            li:nth-child(odd) {
-                border-right: 1px solid #870000;
-                margin-right: 6px;
-              }
-
-          
+        a {
+            color: #bdbdbd;
+            text-decoration: none;
         }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        a:first-child {
+            margin-right: 8px;
+        }
+    }
+
+    .spacer {
+        flex: 1 1 auto;
+    }
+
+    .main {
+        padding: 16px;
     }
 }

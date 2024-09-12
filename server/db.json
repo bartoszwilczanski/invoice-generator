@@ -3,7 +3,7 @@
     "name": "RODEMCO",
     "address": "932 Quentin Road, Ladera, Delaware, 3387",
     "email": "bondsalinas@rodemco.com",
-    "phone": "+1 (956) 503-2947",
+    "phone": "9565032947",
     "id": 1,
     "about": "Consectetur aute deserunt proident elit incididunt cupidatat ullamco occaecat deserunt excepteur ad. Enim pariatur aute exercitation do voluptate exercitation ut reprehenderit in quis. Exercitation irure non enim ea excepteur proident consectetur mollit laboris ipsum anim elit.\r\n",
     "createdAt": "2023-01-15T08:30:00Z",
@@ -45,6 +45,20 @@
       "createdAt": "2024-04-05T07:10:00Z",
       "updatedAt": "2024-06-05T09:45:00Z",
       "companyId": 1
+    },
+    {
+      "name": "123",
+      "count": "11",
+      "price": "31",
+      "companyId": 1,
+      "id": 5
+    },
+    {
+      "name": "asda",
+      "count": "12",
+      "price": "123",
+      "companyId": 1,
+      "id": 6
     }
   ]
 }

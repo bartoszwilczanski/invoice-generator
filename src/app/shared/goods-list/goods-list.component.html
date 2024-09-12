@@ -1,33 +1,50 @@
-<table id="goods-list-table">
-    <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Count</th>
-        @if(!companyId){
-        <th></th>
-        <th></th>
-        }
-    </tr>
-    @for (good of goods; track good.id) {
-    <tr>
-        <td> {{good.name}}</td>
-        <td> {{good.price}}</td>
-        <td> {{good.count}}</td>
 
-        @if(!companyId){
-        <td>
-            <a [routerLink]="['/company', good.companyId]">
-                <ng-icon name="bootstrapEye"></ng-icon>
-            </a>
-        </td>
-        <td *ngIf="onDelete">
-            <button (click)="onDelete(good.id)">
-                <ng-icon name="bootstrapTrash"></ng-icon>
-            </button>
-        </td>
-        }
-    </tr>
-    } @empty {
-    <p>no goods</p>
-    }
-</table>
+<mat-table [dataSource]="goods" class="mat-elevation-z8">
+
+  <!-- Header Row -->
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <!-- Data Rows -->
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let good"> {{ good.name }} </mat-cell>
+  </ng-container>
+
+  <!-- Price Column -->
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+    <mat-cell *matCellDef="let good"> {{ good.price }} </mat-cell>
+  </ng-container>
+
+  <!-- Count Column -->
+  <ng-container matColumnDef="count">
+    <mat-header-cell *matHeaderCellDef> Count </mat-header-cell>
+    <mat-cell *matCellDef="let good"> {{ good.count }} </mat-cell>
+  </ng-container>
+
+
+  <!-- Action Columns (conditionally shown) -->
+  <ng-container matColumnDef="view">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let good">
+      <a [routerLink]="['/company', good.companyId]" matTooltip="View Company">
+        <mat-icon>visibility</mat-icon>
+      </a>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+    <mat-cell *matCellDef="let good">
+      <button mat-icon-button (click)="onDeleteItem(good.id)" matTooltip="Delete Good">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+</mat-table>
+
+<p *ngIf="goods.length === 0">No goods available</p>

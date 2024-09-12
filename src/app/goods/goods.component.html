@@ -5,16 +5,22 @@
         @for (field of fields; track field) {
         <div>
             <label [for]="field">{{ field.charAt(0).toUpperCase() + field.slice(1)}}</label>
-            <input [formControlName]="field" [id]="field" [type]="field==='name'? 'text':'number'" />
+
+            <input
+            matInput
+            [formControlName]="field"
+            [id]="field"
+            [type]="field === 'name' ? 'text' : 'number'"
+          />
+
             @if( getFieldErrors(field)) {<p>{{getFieldErrors(field)}}</p>}
             @else { <p>&nbsp; </p> }
         </div>
         }
 
-
-        <button type="submit">Submit</button>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
     </form>
 
-    <goods-list [goods]="goods" [onDelete]="onDelete" />
+    <goods-list [goods]="goods" [onDelete]='onDelete' />
 
 </div>

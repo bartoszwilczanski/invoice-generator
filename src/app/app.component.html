@@ -1,10 +1,14 @@
-<main class="main">
-  <h1>Invoice generator</h1>
-  <nav>
-    <ul>
-      <li><a routerLink="/">goods</a></li>
-      <li><a routerLink="/company">company</a></li>
-    </ul>
-  </nav>
-  <router-outlet />
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Invoice Generator</span>
+    <span class="spacer"></span>
+    <nav mat-tab-nav-bar>
+      <a mat-button routerLink="/">Goods</a>
+      <a mat-button routerLink="/company">Company</a>
+    </nav>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<main >
+  <router-outlet></router-outlet>
 </main>

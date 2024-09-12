@@ -1,12 +1,12 @@
-#comapny-box{
+#companyBox {
     margin: 20px 0px 20px 48px;
     padding: 16px;
     border: 1px solid black;
     border-radius: 10px;
-    box-shadow: 12px 12px 29px -6px rgba(120,120,120,0.75);
+    box-shadow: 12px 12px 29px -6px rgba(120, 120, 120, 0.75);
     max-width: 800px;
 }
 
-#summary{
+.summary {
     margin-left: 120px;
 }

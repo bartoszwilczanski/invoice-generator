@@ -1,121 +1,86 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Good, GoodsService } from '../services/goods.service';
 import { GoodsListComponent } from '../shared/goods-list/goods-list.component';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { FormValidationLabels } from './goods.constant';
-import { IntegerValidator } from '../utils/validators';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { createGood, getFieldErrors as getFieldErrors2 } from './goods.utils';
 
 @Component({
   selector: 'app-goods',
   standalone: true,
   imports: [GoodsListComponent, ReactiveFormsModule],
   templateUrl: './goods.component.html',
-  styleUrl: './goods.component.css'
+  styleUrl: './goods.component.css',
+  providers: [GoodsService],
 })
 export class GoodsComponent {
-
-  private goodsService = inject(GoodsService);
-
   goodsForm!: FormGroup;
 
-  fields = ['name', 'count', 'price']
+  fields = ['name', 'count', 'price'];
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(
+    private goodsService: GoodsService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
+    this.onDelete = this.onDelete.bind(this);
+  }
 
-  goods: Good[] = []
-
+  goods: Good[] = [];
 
   ngOnInit() {
-
-    this.goodsForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-      count: ['', [Validators.required, Validators.min(1), Validators.max(100), IntegerValidator()]],
-      price: ['', [Validators.required, Validators.min(1), Validators.max(1000000), IntegerValidator()]]
-    });
-
+    this.goodsForm = createGood(this.fb);
     this.loadGoods();
   }
 
   onSubmit(): void {
-
     if (this.isEmptyForm()) {
-      alert('Please add items')
-      return
+      alert('Please add items');
+      return;
     }
-
 
     if (this.goodsForm.valid) {
-      this.goodsService.addGood({
-        ...this.goodsForm.value,
-        companyId: 1
-      }).subscribe({
-        next: (response) => {
-          this.router.navigate([`/company/${response.companyId}`]);
-
-        },
-      });
+      this.goodsService
+        .addGood({
+          ...this.goodsForm.value,
+          companyId: 1,
+        })
+        .subscribe({
+          next: (response) => {
+            this.router.navigate([`/company/${response.companyId}`]);
+          },
+        });
     }
-  }
-
-  onDelete(id: number) {
-
-    alert('You are removing the element.')
-
-    this.goodsService.deleteGood(id).pipe(
-      switchMap(() => {
-        this.loadGoods()
-        return []
-      })
-    ).subscribe();
   }
 
   loadGoods() {
     this.goodsService.getAll().subscribe({
-      next: (goods) => this.goods = goods
+      next: (goods) => (this.goods = goods),
+    });
+  }
+
+  onDelete(id: number): void {
+    alert('You are removing the element.');
+
+    this.goodsService.deleteGood(id).subscribe(() => {
+      this.loadGoods();
     });
   }
 
   isEmptyForm(): boolean {
     for (let field in this.goodsForm.value) {
       if (this.goodsForm.value[field] !== '') {
-        return false
+        return false;
       }
     }
-    return true
+    return true;
   }
 
   getFieldErrors(field: string) {
-    const currField = this.goodsForm.get(field)
-
-    if (!(currField?.invalid && currField?.touched)) return ''
-
-    const error = currField?.errors
-
-    const fieldName = field.charAt(0).toUpperCase() + field.slice(1).toLowerCase()
-
-    const errorKey = Object.keys(error || {})[0]
-
-    let errorValue = FormValidationLabels[errorKey as keyof typeof FormValidationLabels] as string
-
-    if (errorValue) {
-      errorValue = errorValue.replace('{x}', fieldName)
-
-      if (errorKey === 'required') return errorValue;
-      if (error) {
-        if (errorKey === 'minlength' || errorKey === 'maxlength') {
-          return errorValue.replace('{requiredLength}', error[errorKey].requiredLength)
-        }
-        if (errorKey === 'min' || errorKey === 'max') {
-          return errorValue.replace(`{${errorKey}}`, error[errorKey][errorKey])
-        }
-      }
-
-      return errorValue
-    }
-
-    return ''
+    return getFieldErrors2(this.goodsForm, field);
   }
-
 }

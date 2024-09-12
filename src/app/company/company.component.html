@@ -1,8 +1,8 @@
 @if(company){
 <div>
-    <div id="comapny-box">
+    <div id="companyBox">
         <p>{{company.name}}</p>
-        <p>{{company.phone}}</p>
+        <p>{{company.phone | phoneFormat}}</p>
         <p>{{company.email}}</p>
         <p>{{company.address}}</p>
         <p>{{company.about}}</p>
@@ -11,8 +11,8 @@
     @if(companyId){
     <goods-list [goods]="goods" [companyId]="companyId" />
 
-    <p id="summary">total {{goodsSummary()}}</p>
+    <p class="summary">total {{goodsSummary()}}</p>
     }
-    @else{ No items }
+    @else{ <p class="summary">No items </p>}
 </div>
 }
