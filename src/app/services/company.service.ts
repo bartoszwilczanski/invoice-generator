@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -17,7 +17,7 @@ export type Company = {
 export class CompanyService {
   private URL = 'http://localhost:3000';
 
-  private http = inject(HttpClient);
+  constructor(private http: HttpClient) {}
 
   getCompany(): Observable<Company> {
     return this.http.get<Company>(`${this.URL}/company`);

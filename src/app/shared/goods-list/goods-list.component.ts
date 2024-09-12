@@ -23,7 +23,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   ],
   viewProviders: [provideIcons({ bootstrapEye, bootstrapTrash })],
   templateUrl: './goods-list.component.html',
-  styleUrl: './goods-list.component.css',
+  styleUrl: './goods-list.component.scss',
 })
 export class GoodsListComponent {
   displayedColumns: string[] = ['name', 'price', 'count'];

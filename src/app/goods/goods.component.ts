@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 import { Good, GoodsService } from '../services/goods.service';
 import { GoodsListComponent } from '../shared/goods-list/goods-list.component';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { createGood, getFieldErrors as getFieldErrors2 } from './goods.utils';
 
@@ -14,7 +10,7 @@ import { createGood, getFieldErrors as getFieldErrors2 } from './goods.utils';
   standalone: true,
   imports: [GoodsListComponent, ReactiveFormsModule],
   templateUrl: './goods.component.html',
-  styleUrl: './goods.component.css',
+  styleUrl: './goods.component.scss',
   providers: [GoodsService],
 })
 export class GoodsComponent {
@@ -23,9 +19,9 @@ export class GoodsComponent {
   fields = ['name', 'count', 'price'];
 
   constructor(
-    private goodsService: GoodsService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private goodsService: GoodsService
   ) {
     this.onDelete = this.onDelete.bind(this);
   }

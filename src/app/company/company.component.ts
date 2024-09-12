@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Company, CompanyService } from '../services/company.service';
 import { Good, GoodsService } from '../services/goods.service';
 import { GoodsListComponent } from '../shared/goods-list/goods-list.component';
@@ -13,17 +13,18 @@ const SUM_REGEX = /\B(?=(\d{3})+(?!\d))/g;
   standalone: true,
   imports: [PhoneFormatPipe, GoodsListComponent],
   templateUrl: './company.component.html',
-  styleUrl: './company.component.css',
+  styleUrl: './company.component.scss',
 })
 export class CompanyComponent {
-  private companyService = inject(CompanyService);
-  private goodsService = inject(GoodsService);
-
   private routeSub!: Subscription;
 
   companyId?: string;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private companyService: CompanyService,
+    private goodsService: GoodsService
+  ) {}
 
   company?: Company;
   goods: Good[] = [];
