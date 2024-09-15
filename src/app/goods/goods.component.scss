@@ -1,37 +1,27 @@
-#good-wrapper {
-    display: flex;
-    column-gap: 96px;
-    margin-left: 24px;
+#good-container {
+    margin: 16px 32px;
 
-    form {
+    #header-row {
         display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-self: flex-start;
+        align-items: center;
+        column-gap: 16px;
+        margin-bottom: 24px;
 
-        display: flex;
-        column-gap: 24px;
-
-        div {
-            flex-grow: 1;
-
-            label {
-                display: block;
-                margin-right: 8px;
-            }
-
-            input {
-                width: 300px;
-            }
-
-            p {
-                margin: 4px;
-                font-size: 12px;
-                color: red;
-            }
+        span {
+            font-size: 20px;
         }
 
+        button {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
 
     }
 
+    #good-wrapper {
+        display: flex;
+        column-gap: 96px;
+        margin-left: 24px;
+    }
 }

@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Invoice Form</h1>
+<div id="dialog" mat-dialog-content>
+  <form [formGroup]="goodsForm" (ngSubmit)="onSubmit()">
+
+    @for (field of fields; track field) {
+    <div>
+      <label [for]="field">{{ field.charAt(0).toUpperCase() + field.slice(1)}}</label>
+
+      <input matInput [formControlName]="field" [id]="field" [type]="field === 'name' ? 'text' : 'number'" />
+
+      @if( getFieldErrors(field)) {<p>{{getFieldErrors(field)}}</p>}
+      @else { <p>&nbsp; </p> }
+    </div>
+    }
+
+    <div mat-dialog-actions>
+      <button mat-button type='button' (click)="onClose()">Close</button>
+
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+
+    </div>
+
+  </form>
+</div>

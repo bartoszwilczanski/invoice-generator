@@ -1,26 +1,12 @@
-<div id="good-wrapper">
-
-    <form [formGroup]="goodsForm" (ngSubmit)="onSubmit()">
-
-        @for (field of fields; track field) {
-        <div>
-            <label [for]="field">{{ field.charAt(0).toUpperCase() + field.slice(1)}}</label>
-
-            <input
-            matInput
-            [formControlName]="field"
-            [id]="field"
-            [type]="field === 'name' ? 'text' : 'number'"
-          />
-
-            @if( getFieldErrors(field)) {<p>{{getFieldErrors(field)}}</p>}
-            @else { <p>&nbsp; </p> }
-        </div>
-        }
-
-        <button mat-raised-button color="primary" type="submit">Submit</button>
-    </form>
-
-    <goods-list [goods]="goods" [onDelete]='onDelete' />
-
+<div id="good-container">
+    <div id="header-row">
+        <span>Invoice Generator</span>
+        <button mat-raised-button color="primary" (click)="openDialog()">
+            <mat-icon>add</mat-icon>
+            Add invoice
+        </button>
+    </div>
+    <div id="good-wrapper">
+        <goods-list [goods]="goods" [onDelete]="onDelete" />
+    </div>
 </div>

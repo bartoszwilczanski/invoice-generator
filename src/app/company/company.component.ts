@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { Company, CompanyService } from '../services/company.service';
-import { Good, GoodsService } from '../services/goods.service';
+import { CompanyService } from '../services/company.service';
+import { GoodsService } from '../services/goods.service';
 import { GoodsListComponent } from '../shared/goods-list/goods-list.component';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PhoneFormatPipe } from '../utils/pipes/PhoneFormatPipe';
+import { Company } from '../models/company.model';
+import { Good } from '../models/good.model';
 
 const SUM_REGEX = /\B(?=(\d{3})+(?!\d))/g;
 

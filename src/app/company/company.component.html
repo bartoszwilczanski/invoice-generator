@@ -1,18 +1,23 @@
 @if(company){
 <div>
-    <div id="companyBox">
-        <p>{{company.name}}</p>
-        <p>{{company.phone | phoneFormat}}</p>
-        <p>{{company.email}}</p>
-        <p>{{company.address}}</p>
-        <p>{{company.about}}</p>
+    <div id="company-box">
+        <p>{{ company.name }}</p>
+        <p>{{ company.phone | phoneFormat }}</p>
+        <p>{{ company.email }}</p>
+        <p>{{ company.address }}</p>
+        <p>{{ company.about }}</p>
     </div>
 
-    @if(companyId){
-    <goods-list [goods]="goods" [companyId]="companyId" />
+    @if(!companyId) {
+    <p class="summary">No items</p>
+    } @else{
+    <div id="company-content">
 
-    <p class="summary">total {{goodsSummary()}}</p>
+        <goods-list [goods]="goods" [companyId]="companyId" />
+
+        <p class="summary">total {{ goodsSummary() }}</p>
+    </div>
+
     }
-    @else{ <p class="summary">No items </p>}
 </div>
 }

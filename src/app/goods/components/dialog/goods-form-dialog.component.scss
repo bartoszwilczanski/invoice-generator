@@ -1,0 +1,33 @@
+#dialog {
+    form {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-self: flex-start;
+
+        display: flex;
+        column-gap: 24px;
+
+        div {
+            flex-grow: 1;
+
+            label {
+                display: block;
+                margin-right: 8px;
+            }
+
+            input {
+                width: 100%;
+            }
+
+            p {
+                margin: 4px;
+                font-size: 12px;
+                color: red;
+            }
+        }
+
+
+    }
+
+}

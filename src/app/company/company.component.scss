@@ -1,4 +1,4 @@
-#companyBox {
+#company-box {
     margin: 20px 0px 20px 48px;
     padding: 16px;
     border: 1px solid black;
@@ -9,4 +9,14 @@
 
 .summary {
     margin-left: 120px;
+}
+
+#company-content {
+    margin-left: 64px;
+
+    .summary {
+        margin-left: 240px;
+        font-size: 18px;
+        font-weight: 500;
+    }
 }

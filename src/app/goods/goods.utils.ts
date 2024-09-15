@@ -29,7 +29,7 @@ export function createGood(fb: FormBuilder): FormGroup {
   });
 }
 
-export function getFieldErrors(goodsForm: FormGroup, field: string): string {
+export function createFieldErrors(goodsForm: FormGroup, field: string): string {
   const currField = goodsForm.get(field);
 
   if (!(currField?.invalid && currField?.touched)) return '';

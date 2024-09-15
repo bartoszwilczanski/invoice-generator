@@ -1,17 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-export type Company = {
-  name: string;
-  address: string;
-  email: string;
-  phone: string;
-  id: number;
-  about: string;
-  createdAt: string;
-  updatedAt: string;
-};
+import { map, Observable } from 'rxjs';
+import { Company } from '../models/company.model';
 
 @Injectable({ providedIn: 'root' })
 export class CompanyService {
@@ -20,6 +10,8 @@ export class CompanyService {
   constructor(private http: HttpClient) {}
 
   getCompany(): Observable<Company> {
-    return this.http.get<Company>(`${this.URL}/company`);
+    return this.http
+      .get<Company>(`${this.URL}/company`)
+      .pipe(map((data: any) => new Company(data)));
   }
 }
