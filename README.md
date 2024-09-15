@@ -1,11 +1,13 @@
-application launch steps
 
-open two terminals
 
-1 terminal run
+# Application launch steps
 
-npm run api
+## open two terminals
 
-2. termin run
+### 1 terminal run
 
-npm start
+**npm run api**
+
+### 2. termin run
+
+**npm start**
